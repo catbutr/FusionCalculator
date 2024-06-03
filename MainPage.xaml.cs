@@ -13,9 +13,7 @@ namespace FusionCalculator
 
         private async void OnCounterClicked(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new ListPage(), true);
-            var database = new FusionDatabaseRepository();
-            database.AddSkil();
+            await Navigation.PushAsync(new ListPage(), true);
         }
     }
 

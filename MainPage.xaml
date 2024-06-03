@@ -30,6 +30,14 @@
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="CollectionViewBtn"
+                Text="Cleck to see the collection view" 
+                SemanticProperties.Hint="collection view"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Fill" />
+            
         </VerticalStackLayout>
     </ScrollView>
 

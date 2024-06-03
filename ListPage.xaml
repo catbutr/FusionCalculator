@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FusionCalculator.ListPage"
-             Title="ListPage">
-    <VerticalStackLayout>
+             xmlns:dg="clr-namespace:Maui.DataGrid;assembly=Maui.DataGrid"
+             x:Class="FusionCalculator.ListPage">
+ 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="Auto"/>
+            <RowDefinition Height ="*"/>
+            <RowDefinition Height ="Auto"/>
+        </Grid.RowDefinitions>
         <Label 
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center" Grid.Row="0"/>
+
+        <ScrollView Orientation="Vertical" Grid.Row="1">
+            <dg:DataGrid ItemsSource="{Binding Skills}">
+                <dg:DataGrid.Columns>
+                    <dg:DataGridColumn Title="Name" PropertyName="Name" IsVisible="True" Width="*" />
+                    <dg:DataGridColumn Title="Element" PropertyName="Element" IsVisible="True" Width="*" />
+                    <dg:DataGridColumn Title="Power" PropertyName="Power" IsVisible="True" Width="*" />
+                    <dg:DataGridColumn Title="Target" PropertyName="Target" IsVisible="True" Width="*" />
+                    <dg:DataGridColumn Title="Effect" PropertyName="Effect" IsVisible="True" Width="*" />
+                    <dg:DataGridColumn Title="Cost" PropertyName="Cost" IsVisible="True" Width="*" />
+
+                </dg:DataGrid.Columns>
+            </dg:DataGrid>
+        </ScrollView>
+
         <Button
             x:Name="CounterBtn"
             Text="Return back" 
             SemanticProperties.Hint="Counts the number of times you click"
             Clicked="OnCounterClicked"
-            HorizontalOptions="Fill" />
-    </VerticalStackLayout>
+            HorizontalOptions="Fill" 
+            Grid.Row="2"/>
+    </Grid>
 </ContentPage>
