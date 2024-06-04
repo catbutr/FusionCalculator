@@ -15,46 +15,46 @@ namespace FusionCalculator.Database.Tables
         public int DemonID { get; set; }
 
         [Column("Phys")]
-        public int Phys { get; set; }
+        public string Phys { get; set; }
 
         [Column("Gun")]
-        public int Gun { get; set; }
+        public string Gun { get; set; }
 
         [Column("Fire")]
-        public int Fire { get; set; }
+        public string Fire { get; set; }
 
         [Column("Ice")]
-        public int Ice { get; set; }
+        public string Ice { get; set; }
 
         [Column("Elec")]
-        public int Elec { get; set; }
+        public string Elec { get; set; }
 
         [Column("Force")]
-        public int Force { get; set; }
+        public string Force { get; set; }
 
         [Column("Nerve")]
-        public int Nerve { get; set; }
+        public string Nerve { get; set; }
 
         [Column("Expel")]
-        public int Expel { get; set; }
+        public string Expel { get; set; }
 
         [Column("Death")]
-        public int Death { get; set; }
+        public string Death { get; set; }
 
         [Column("Curse")]
-        public int Curse { get; set; }
+        public string Curse { get; set; }
 
         [Column("Bind")]
-        public int Bind { get; set; }
+        public string Bind { get; set; }
 
         [Column("Rush")]
-        public int Rush { get; set; }
+        public string Rush { get; set; }
 
         [Column("Punch")]
-        public int Punch { get; set; }
+        public string Punch { get; set; }
 
         [Column("Flying")]
-        public int Flying { get; set; }
+        public string Flying { get; set; }
 
     }
 }

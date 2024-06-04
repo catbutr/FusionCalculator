@@ -37,12 +37,25 @@ namespace FusionCalculator.ViewModels
 
         public int demonLck { get; set; }
 
+        public string physResist { get; set; }
+        public string gunResist { get; set; }
+        public string fireResist { get; set; }
+        public string iceResist { get; set; }
+        public string elecResist { get; set; }
+
+        public string forceResist { get; set; }
+        public string expelResist { get; set; }
+        public string curseResist { get; set; }
+
+
+
         public DemonVM(int demonID)
         {
             Database = new SQLiteConnection(Constants.DatabasePath);
             demonRace = GetDemonRace(demonID);
             demonName = GetDemonName(demonID);
             demonLevel = GetDemonLevel(demonID);
+
             demonHP = GetDemonHP(demonID);
             demonMP = GetDemonMP(demonID);
             demonStr = GetDemonStr(demonID);
@@ -51,12 +64,27 @@ namespace FusionCalculator.ViewModels
             demonMag = GetDemonMag(demonID);
             demonAgi = GetDemonAgi(demonID);
             demonLck = GetDemonStr(demonID);
+
+            physResist = GetDemonPhysResistance(demonID);
+            gunResist = GetDemonGunResistance(demonID);
+
+            fireResist = GetDemonFireResistance(demonID);
+            iceResist = GetDemonIceResistance(demonID);
+            elecResist = GetDemonElecResistance(demonID);
+            forceResist = GetDemonForceResistance(demonID);
+
+            expelResist = GetDemonExpelResistance(demonID);
+            curseResist = GetDemonCurseResistance(demonID);
+
         }
 
         private string GetDemonRace(int demonID)
         {
             var dbRace = Database.Table<Race>();
-            var demonRace = dbRace.Single(n => n.Id == demonID);
+            var dbDemon = Database.Table<Demon>();
+            var demonEntry = dbDemon.Single(n => n.Id == demonID);
+            var demonRaceId = demonEntry.Race;
+            var demonRace = dbRace.Single(n => n.Id == demonRaceId);
             return demonRace.Name;
         }
 
@@ -128,6 +156,63 @@ namespace FusionCalculator.ViewModels
             var dbDemon = Database.Table<DemonStats>();
             var demonEntry = dbDemon.Single(n => n.DemonID == demonID);
             return demonEntry.Luck;
+        }
+
+        private string GetDemonPhysResistance(int demonID)
+        {
+            var dbResist = Database.Table<Resistances>();
+            var demonEntry = dbResist.Single(n => n.DemonID == demonID);
+            return demonEntry.Phys;
+        }
+
+        private string GetDemonGunResistance(int demonID)
+        {
+            var dbResist = Database.Table<Resistances>();
+            var demonEntry = dbResist.Single(n => n.DemonID == demonID);
+            return demonEntry.Gun;
+        }
+
+
+        private string GetDemonFireResistance(int demonID)
+        {
+            var dbResist = Database.Table<Resistances>();
+            var demonEntry = dbResist.Single(n => n.DemonID == demonID);
+            return demonEntry.Fire;
+        }
+
+        private string GetDemonIceResistance(int demonID)
+        {
+            var dbResist = Database.Table<Resistances>();
+            var demonEntry = dbResist.Single(n => n.DemonID == demonID);
+            return demonEntry.Ice;
+        }
+
+        private string GetDemonElecResistance(int demonID)
+        {
+            var dbResist = Database.Table<Resistances>();
+            var demonEntry = dbResist.Single(n => n.DemonID == demonID);
+            return demonEntry.Elec;
+        }
+
+        private string GetDemonForceResistance(int demonID)
+        {
+            var dbResist = Database.Table<Resistances>();
+            var demonEntry = dbResist.Single(n => n.DemonID == demonID);
+            return demonEntry.Force;
+        }
+
+        private string GetDemonExpelResistance(int demonID)
+        {
+            var dbResist = Database.Table<Resistances>();
+            var demonEntry = dbResist.Single(n => n.DemonID == demonID);
+            return demonEntry.Expel;
+        }
+
+        private string GetDemonCurseResistance(int demonID)
+        {
+            var dbResist = Database.Table<Resistances>();
+            var demonEntry = dbResist.Single(n => n.DemonID == demonID);
+            return demonEntry.Curse;
         }
 
 
