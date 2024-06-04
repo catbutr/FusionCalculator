@@ -16,11 +16,11 @@
             HorizontalOptions="Center" Grid.Row="0"/>
 
         <ScrollView Orientation="Vertical" Grid.Row="1">
-            <dg:DataGrid ItemsSource="{Binding Skills}">
+            <dg:DataGrid ItemsSource="{Binding Path=DemonList}">
                 <dg:DataGrid.Columns>
-                    <dg:DataGridColumn Title="Name" PropertyName="Name" IsVisible="True" Width="*" />
-                    <dg:DataGridColumn Title="Element" PropertyName="Element" IsVisible="True" Width="*" />
-                    <dg:DataGridColumn Title="Power" PropertyName="Power" IsVisible="True" Width="*" />
+                    <dg:DataGridColumn Title="Name" PropertyName="demonRace" IsVisible="True" Width="*" />
+                    <dg:DataGridColumn Title="Element" PropertyName="demonLevel" IsVisible="True" Width="*" />
+                    <dg:DataGridColumn Title="Power" PropertyName="demonName" IsVisible="True" Width="*" />
                     <dg:DataGridColumn Title="Target" PropertyName="Target" IsVisible="True" Width="*" />
                     <dg:DataGridColumn Title="Effect" PropertyName="Effect" IsVisible="True" Width="*" />
                     <dg:DataGridColumn Title="Cost" PropertyName="Cost" IsVisible="True" Width="*" />

@@ -18,6 +18,7 @@ namespace FusionCalculator.Resources.Constants
             // enable multi-threaded database access
             SQLite.SQLiteOpenFlags.SharedCache;
 
-        public static string DatabasePath => Path.Combine(FileSystem.Current.AppDataDirectory, DatabaseFilename);
+        //public static string DatabasePath => Path.Combine(FileSystem.Current.AppDataDirectory, DatabaseFilename);
+        public static string DatabasePath = "E:\\FusionCalculator\\FusionData.db";
     }
 }

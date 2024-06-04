@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using FusionCalculator.Resources.Constants;
+using Microsoft.Extensions.Logging;
 
 namespace FusionCalculator
 {

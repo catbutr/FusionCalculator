@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FusionCalculator.Database.Tables
 {
-    [Table("Resistance")]
+    [Table("Resistances")]
     class Resistances
     {
         [PrimaryKey]
