@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace FusionCalculator.Database.Tables
 {
     [Table("Demons")]
-    class Demon
+    public class Demon
     {
         [PrimaryKey, AutoIncrement, Unique]
         [Column("Id")]

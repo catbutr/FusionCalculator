@@ -1,4 +1,5 @@
 ﻿using FusionCalculator.Database.Tables;
+using FusionCalculator.Models;
 using FusionCalculator.Resources.Constants;
 using SQLite;
 using System;
@@ -8,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FusionCalculator.ViewModels
 {
@@ -47,7 +49,43 @@ namespace FusionCalculator.ViewModels
         public string expelResist { get; set; }
         public string curseResist { get; set; }
 
+        public List<FusionPair> FusionPairs { get; set; } = new List<FusionPair>();
 
+        public List<FusionPair> GetFusions(int demonId)
+        {
+            var fusions = new List<FusionPair>();
+            var dbDemon = Database.Table<Demon>();
+            var dbFusionPairs  = Database.Table<RaceFusionPairs>();
+            var dbRace = Database.Table<Race>();
+            var demonEntry = dbDemon.Single(n => n.Id == demonId);
+            var demonRaceList = dbDemon.Where(n => n.Race == demonEntry.Race);
+            var fusionPairs = dbFusionPairs.Where(n => n.RaceID == demonEntry.Race);
+            if (fusionPairs != null)
+            {
+                foreach(var fusionPair in fusionPairs)
+                {
+                    var firstRace = dbRace.Single(n => n.Id == fusionPair.First);
+                    var secondRace = dbRace.Single(n => n.Id == fusionPair.Second);
+                    foreach (var firstRaceDemon in dbDemon.Where(n => n.Race == fusionPair.First))
+                    {
+                        foreach (var secondRaceDemon in dbDemon.Where(n => n.Race == fusionPair.Second))
+                        {
+                            var averageLevel = (firstRaceDemon.Level + secondRaceDemon.Level) / 2;
+                            var closestFusion = demonRaceList.Aggregate((x, y) => Math.Abs(x.Level - averageLevel) < Math.Abs(y.Level - averageLevel) ? x : y);
+                            if (closestFusion.Level == demonEntry.Level)
+                            {
+                                fusions.Add(new FusionPair(firstRaceDemon, secondRaceDemon));
+                            }
+                            //if (averageLevel < demonEntry.Level+3 && averageLevel > demonEntry.Level - 3)
+                            //{
+                            //    fusions.Add(new FusionPair(firstRaceDemon, secondRaceDemon));
+                            //}
+                        }
+                    }
+                }
+            }
+            return fusions;
+        }
 
         public DemonVM(int demonID)
         {
@@ -75,6 +113,7 @@ namespace FusionCalculator.ViewModels
 
             expelResist = GetDemonExpelResistance(demonID);
             curseResist = GetDemonCurseResistance(demonID);
+            FusionPairs = GetFusions(74);
 
         }
 

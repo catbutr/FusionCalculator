@@ -23,7 +23,7 @@ namespace FusionCalculator.Database.Tables
         [Column("Power")]
         public int Power { get; set; }
 
-        [Column("Target")]
+        [Column("Resistances")]
         public string Target { get; set; }
 
         [Column("Effect")]
@@ -31,5 +31,12 @@ namespace FusionCalculator.Database.Tables
 
         [Column("Cost")]
         public int Cost { get; set; }
+
+        [Column("Skill1")]
+        public int Skill1 { get; set; }
+        [Column("Skill2")]
+        public int Skill2 { get; set; }
+        [Column("Skill3")]
+        public int Skill3 { get; set; }
     }
 }
