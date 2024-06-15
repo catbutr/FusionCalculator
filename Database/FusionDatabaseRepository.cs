@@ -66,7 +66,7 @@ namespace FusionCalculator.Database
             });
         }
 
-        public ObservableCollection<Skill> GetSkills()
+        private ObservableCollection<Skill> GetSkills()
         {
             var dbSkills = Database.Table<Skill>();
             var skills = new ObservableCollection<Skill>();

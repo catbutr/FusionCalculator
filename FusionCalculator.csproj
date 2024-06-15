@@ -74,13 +74,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="ListPage.xaml.cs">
-	    <DependentUpon>ListPage.xaml</DependentUpon>
+	  <Compile Update="DemonListPage.xaml.cs">
+	    <DependentUpon>DemonListPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="DemonPage.xaml.cs">
+	    <DependentUpon>DemonPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="SkillListPage.xaml.cs">
+	    <DependentUpon>SkillListPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="ListPage.xaml">
+	  <MauiXaml Update="DemonListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="DemonPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SkillListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

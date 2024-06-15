@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Reflection.Metadata;
 namespace FusionCalculator;
 
-public partial class ListPage : ContentPage
+public partial class DemonListPage : ContentPage
 {
-	public ListPage()
+	public DemonListPage()
 	{
 		InitializeComponent();
         //var assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;

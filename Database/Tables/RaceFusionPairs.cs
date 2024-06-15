@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace FusionCalculator.Database.Tables
 {
     [Table("RaceFusionPairs")]
-    internal class RaceFusionPairs
+    public class RaceFusionPairs
     {
         [Column("RaceID")]
         public int RaceID { get; set; }

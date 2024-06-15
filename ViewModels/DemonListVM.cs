@@ -9,7 +9,7 @@ namespace FusionCalculator.ViewModels
 {
     public class DemonListVM
     {
-        public List<DemonVM> DemonList { get; set; } = new List<DemonVM>();
+        public List<DemonVM> DemonList { get; set; } = [];
 
         public DemonListVM()
         {

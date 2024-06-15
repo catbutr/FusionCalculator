@@ -29,5 +29,12 @@ namespace FusionCalculator.Database.Tables
         [Column("ResistanceID")]
         public int ResistanceID { get; set; }
 
+        [Column("Skill1")]
+        public int Skill1 { get; set; }
+        [Column("Skill2")]
+        public int Skill2 { get; set; }
+        [Column("Skill3")]
+        public int Skill3 { get; set; }
+
     }
 }

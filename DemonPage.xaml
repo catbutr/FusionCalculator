@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FusionCalculator.DemonPage"
+             xmlns:dg="clr-namespace:Maui.DataGrid;assembly=Maui.DataGrid"
+             Title="NewPage1" BackgroundColor="Black">
+    <Frame BackgroundColor="Black" BorderColor="White">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0" Orientation="Vertical">
+                    <Label Text="{Binding Path=demonRace, StringFormat='Lvl:{0}'}"/>
+                    <Label Text="{Binding Path=demonHP, StringFormat='HP:{0}'}"/>
+                    <Label Text="{Binding Path=demonMP, StringFormat='MP:{0}'}"/>
+                    <Label Text="{Binding Path=demonCP, StringFormat='CP:{0}'}"/>
+                </StackLayout>
+                <Image Grid.Column="1"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" Orientation="Vertical">
+                    <Label Text="{Binding Path=demonPAtk, StringFormat='P.Hit:{0}'}"/>
+                    <Label Text="{Binding Path=demonPAccuracy, StringFormat='P.Accuracy:{0}'}"/>
+                    <Label Text="{Binding Path=demonDefence, StringFormat='Defence:{0}'}"/>
+                    <Label Text="{Binding Path=demonEvasion, StringFormat='Evasion:{0}'}"/>
+                    <Label Text="{Binding Path=demonMAtk, StringFormat='M.Hit:{0}'}"/>
+                    <Label Text="{Binding Path=demonMAccuracy, StringFormat='M.Accuracy:{0}'}"/>
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0" Orientation="Vertical">
+                    <Label Text="{Binding Path=demonStr, StringFormat='Strength:{0}'}"/>
+                    <Label Text="{Binding Path=demonInt, StringFormat='Intelligence:{0}'}"/>
+                    <Label Text="{Binding Path=demonMag, StringFormat='Magic:{0}'}"/>
+                    <Label Text="{Binding Path=demonVit, StringFormat='Vitality:{0}'}"/>
+                    <Label Text="{Binding Path=demonAgi, StringFormat='Agility:{0}'}"/>
+                    <Label Text="{Binding Path=demonLck, StringFormat='Luck:{0}'}"/>
+                </StackLayout>
+                <StackLayout Grid.Column="1" Orientation="Vertical">
+                    <ProgressBar Progress="{Binding demonStr}"/>
+                    <ProgressBar Progress="{Binding demonInt}"/>
+                    <ProgressBar Progress="{Binding demonMag}"/>
+                    <ProgressBar Progress="{Binding demonVit}"/>
+                    <ProgressBar Progress="{Binding demonAgi}"/>
+                    <ProgressBar Progress="{Binding demonLck}"/>
+                </StackLayout>
+            </Grid>
+            <dg:DataGrid ItemsSource="{Binding Path=FusionPairs}" BorderColor="White" Margin="30" HeaderBackground="Black"
+                         HeaderLabelStyle="{StaticResource HeaderLabel}">
+                <dg:DataGrid.RowsBackgroundColorPalette>
+                    <dg:PaletteCollection>
+                        <Color>#000000</Color>
+                        <Color>#000000</Color>
+                    </dg:PaletteCollection>
+                </dg:DataGrid.RowsBackgroundColorPalette>
+                <dg:DataGrid.RowsTextColorPalette>
+                    <dg:PaletteCollection>
+                        <Color>#FFFFFF</Color>
+                        <Color>#FFFFFF</Color>
+                    </dg:PaletteCollection>
+                </dg:DataGrid.RowsTextColorPalette>
+                <dg:DataGrid.Columns>
+                    <dg:DataGridColumn Title="Demon 1" PropertyName="demon1" IsVisible="True" Width="Auto"/>
+                    <dg:DataGridColumn Title="Demon 2" PropertyName="demon2" IsVisible="True" Width="Auto" />
+                </dg:DataGrid.Columns>
+            </dg:DataGrid>
+        </Grid>
+    </Frame>
+</ContentPage>

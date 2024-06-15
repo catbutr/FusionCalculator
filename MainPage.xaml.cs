@@ -13,7 +13,12 @@ namespace FusionCalculator
 
         private async void OnCounterClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ListPage(), true);
+            await Navigation.PushAsync(new DemonListPage(), true);
+        }
+
+        private async void OnSkillButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SkillListPage(), true);
         }
     }
 
