@@ -21,6 +21,8 @@ namespace FusionCalculator.ViewModels
 
         private TableQuery<Race>? dbRace { get; set; }
 
+        private TableQuery<Skill>? dbSkills { get; set; }
+
         private TableQuery<DemonStats>? dbDemonStats { get; set; }
 
         private TableQuery<Resistances>? dbDemonResists { get; set; }
@@ -76,6 +78,10 @@ namespace FusionCalculator.ViewModels
         public int demonMAtk { get; set; }
         public int demonMAccuracy { get; set; }
 
+        public Skill skill1 { get; set; }
+        public Skill skill2 { get; set; }
+        public Skill skill3 { get; set; }
+
         public List<FusionPair> FusionPairs { get; set; } = new List<FusionPair>();
 
         public List<FusionPair> GetFusions(int demonId)
@@ -110,11 +116,12 @@ namespace FusionCalculator.ViewModels
 
         public DemonVM(int demonID)
         {
-            Database = new SQLiteConnection(Constants.DatabasePath);
+            Database = new SQLiteConnection(Path.Combine(FileSystem.Current.AppDataDirectory, "FusionData.db"));
             dbDemon = Database.Table<Demon>();
             dbRace = Database.Table<Race>();
             dbDemonResists = Database.Table<Resistances>();
             dbDemonStats = Database.Table<DemonStats>();
+            dbSkills = Database.Table<Skill>();
             demonRace = GetDemonRace(demonID);
             demonName = GetDemonName(demonID);
             demonLevel = GetDemonLevel(demonID);
@@ -148,6 +155,31 @@ namespace FusionCalculator.ViewModels
             curseResist = GetDemonCurseResistance(demonID);
             FusionPairs = GetFusions(demonID);
 
+            skill1 = GetSkill1(demonID);
+            skill2 = GetSkill2(demonID);
+            skill3 = GetSkill3(demonID);
+
+        }
+
+        private Skill GetSkill1(int demonID)
+        {
+            var demonEntry = dbDemon.Single(n => n.Id == demonID);
+            var skillID = demonEntry.Skill1;
+            return dbSkills.Single(n => n.Id == skillID);
+        }
+
+        private Skill GetSkill2(int demonID)
+        {
+            var demonEntry = dbDemon.Single(n => n.Id == demonID);
+            var skillID = demonEntry.Skill2;
+            return dbSkills.Single(n => n.Id == skillID);
+        }
+
+        private Skill GetSkill3(int demonID)
+        {
+            var demonEntry = dbDemon.Single(n => n.Id == demonID);
+            var skillID = demonEntry.Skill3;
+            return dbSkills.Single(n => n.Id == skillID);
         }
 
         private string GetDemonRace(int demonID)

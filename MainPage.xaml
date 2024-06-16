@@ -5,55 +5,57 @@
              Background="Black">
 
     <ScrollView>
-        <Frame Margin="15,10,15,10" BackgroundColor="Black" CornerRadius="0">
-            <VerticalStackLayout
+        <Frame CornerRadius="0" Margin="0" Padding="0" BackgroundColor="#3A413A" BorderColor="#3A413A">
+            <Frame BackgroundColor="Black" BorderColor="#657B75" HasShadow="True" Margin="5" CornerRadius="0">
+                <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-                <Label
+                    <Label
                 Text="Compendium" Margin="0,15,0,0"
                     FontFamily="Consolas">
-                    <Label.Style>
-                        <Style TargetType="Label">
-                            <Setter Property="TextColor" Value="White"/>
-                            <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                            <Setter Property="VerticalTextAlignment" Value="Center"/>
-                        </Style>
-                    </Label.Style>
-                </Label>
+                        <Label.Style>
+                            <Style TargetType="Label">
+                                <Setter Property="TextColor" Value="White"/>
+                                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                            </Style>
+                        </Label.Style>
+                    </Label>
 
-                <Button
+                    <Button
                 x:Name="CounterBtn"
                 Text="DEMONS" 
                 FontFamily="Consolas"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill">
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Background" Value="Black"/>
-                            <Setter Property="BorderColor" Value="White"/>
-                            <Setter Property="BorderWidth" Value="2"/>
-                            <Setter Property="CornerRadius" Value="0"/>
-                        </Style>
-                    </Button.Style>
-                </Button>
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Black"/>
+                                <Setter Property="BorderColor" Value="White"/>
+                                <Setter Property="BorderWidth" Value="2"/>
+                                <Setter Property="CornerRadius" Value="0"/>
+                            </Style>
+                        </Button.Style>
+                    </Button>
 
-                <Button
+                    <Button
                 x:Name="CollectionViewBtn"
                 Text="SKILLS" 
                 FontFamily="Consolas"
                 Clicked="OnSkillButtonClicked"
                 HorizontalOptions="Fill">
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Background" Value="Black"/>
-                            <Setter Property="BorderColor" Value="White"/>
-                            <Setter Property="BorderWidth" Value="2"/>
-                            <Setter Property="CornerRadius" Value="0"/>
-                        </Style>
-                    </Button.Style>
-                </Button>
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Black"/>
+                                <Setter Property="BorderColor" Value="White"/>
+                                <Setter Property="BorderWidth" Value="2"/>
+                                <Setter Property="CornerRadius" Value="0"/>
+                            </Style>
+                        </Button.Style>
+                    </Button>
 
-            </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
         </Frame>
     </ScrollView>
 

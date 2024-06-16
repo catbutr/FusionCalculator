@@ -57,11 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiAsset Remove="Resources\Raw\FusionData.db" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Include="Resources\Raw\FusionData.db" />
+	  <None Remove="FusionData.db" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -83,6 +79,12 @@
 	  <Compile Update="SkillListPage.xaml.cs">
 	    <DependentUpon>SkillListPage.xaml</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Update="Resources\Raw\fusiondata.db">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiAsset>
 	</ItemGroup>
 
 	<ItemGroup>

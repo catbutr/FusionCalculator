@@ -1,5 +1,6 @@
 ﻿using FusionCalculator.Database.Tables;
 using FusionCalculator.Resources.Constants;
+using FusionCalculator.Utils;
 using SQLite;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -51,7 +52,7 @@ namespace FusionCalculator.Database
 
         public FusionDatabaseRepository()
         {
-            Database = new SQLiteConnection(Constants.DatabasePath);
+            Database = new SQLiteConnection(Path.Combine(FileSystem.Current.AppDataDirectory, "FusionData.db"));
             Skills = GetSkills();
         }
 

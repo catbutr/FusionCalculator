@@ -19,6 +19,6 @@ namespace FusionCalculator.Resources.Constants
             SQLite.SQLiteOpenFlags.SharedCache;
 
         //public static string DatabasePath => Path.Combine(FileSystem.Current.AppDataDirectory, DatabaseFilename);
-        public static string DatabasePath = "E:\\FusionCalculator\\FusionData.db";
+        public static string DatabasePath = "FusionData.db";
     }
 }

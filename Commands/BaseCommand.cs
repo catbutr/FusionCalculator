@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace FusionCalculator.Commands
 {
-    class BaseCommand : ICommand
+    public abstract class BaseCommand
     {
         ///// <summary>
         ///// Доступна ли команда.

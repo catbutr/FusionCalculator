@@ -6,7 +6,7 @@
     <ContentPage.Resources>
         <DataTemplate x:Key="cellTemplate">
             <Button BindingContext="{x:Reference DemonName}"
-                Text="{Binding}" Clicked="OnCounterClicked">
+                Text="{Binding}" Clicked="OpenDemonPage">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="Black"/>
@@ -21,58 +21,63 @@
             <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
         </Style>
     </ContentPage.Resources>
-    <Grid BackgroundColor="Black">
-        <Grid.RowDefinitions>
-            <RowDefinition Height ="Auto"/>
-            <RowDefinition Height ="*"/>
-            <RowDefinition Height ="Auto"/>
-        </Grid.RowDefinitions>
+    <Frame CornerRadius="0" Margin="0" Padding="0" BackgroundColor="#3A413A" BorderColor="#3A413A">
+        <Frame BackgroundColor="Black" BorderColor="#657B75" HasShadow="True" Margin="5" CornerRadius="0">
+            <Grid BackgroundColor="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height ="Auto"/>
+                    <RowDefinition Height ="*"/>
+                    <RowDefinition Height ="Auto"/>
+                </Grid.RowDefinitions>
 
-        <ScrollView Orientation="Vertical" Grid.Row="1" IsVisible="Visible">
-            <dg:DataGrid ItemsSource="{Binding Path=DemonList}" BorderColor="White" Margin="30" HeaderBackground="Black"
+                <ScrollView Orientation="Vertical" Grid.Row="1" IsVisible="Visible">
+                    <dg:DataGrid x:Name="DataGrid"  ItemsSource="{Binding Path=DemonList}" BorderColor="White"
+                                 HeaderBackground="Black" HorizontalOptions="Center"
                          HeaderLabelStyle="{StaticResource HeaderLabel}">
-                <dg:DataGrid.RowsBackgroundColorPalette>
-                    <dg:PaletteCollection>
-                        <Color>#000000</Color>
-                        <Color>#000000</Color>
-                    </dg:PaletteCollection>
-                </dg:DataGrid.RowsBackgroundColorPalette>
-                <dg:DataGrid.RowsTextColorPalette>
-                    <dg:PaletteCollection>
-                        <Color>#FFFFFF</Color>
-                        <Color>#FFFFFF</Color>
-                    </dg:PaletteCollection>
-                </dg:DataGrid.RowsTextColorPalette>
-                <dg:DataGrid.Columns>
-                        <dg:DataGridColumn Title="Race" PropertyName="demonRace" IsVisible="True" Width="60*"/>
-                        <dg:DataGridColumn Title="Lvl" PropertyName="demonLevel" IsVisible="True" Width="30*" />
-                    <dg:DataGridColumn x:Name ="DemonName" Title="Name" PropertyName="demonName" IsVisible="True" Width="90*" CellTemplate="{StaticResource cellTemplate}"/>
-                    <dg:DataGridColumn Title="HP" PropertyName="demonHP" IsVisible="True" Width="30*" />
-                        <dg:DataGridColumn Title="MP" PropertyName="demonMP" IsVisible="True" Width="30*" />
-                        <dg:DataGridColumn Title="St" PropertyName="demonStr" IsVisible="True" Width="30*" />
-                        <dg:DataGridColumn Title="In" PropertyName="demonInt" IsVisible="True" Width="30*" />
-                        <dg:DataGridColumn Title="Ma" PropertyName="demonMag" IsVisible="True" Width="30*" />
-                        <dg:DataGridColumn Title="Vi" PropertyName="demonVit" IsVisible="True" Width="30*" />
-                        <dg:DataGridColumn Title="Ag" PropertyName="demonAgi" IsVisible="True" Width="30*" />
-                        <dg:DataGridColumn Title="Lu" PropertyName="demonLck" IsVisible="True" Width="30*" />
-                </dg:DataGrid.Columns>
-            </dg:DataGrid>
-        </ScrollView>
+                        <dg:DataGrid.RowsBackgroundColorPalette>
+                            <dg:PaletteCollection>
+                                <Color>#000000</Color>
+                                <Color>#000000</Color>
+                            </dg:PaletteCollection>
+                        </dg:DataGrid.RowsBackgroundColorPalette>
+                        <dg:DataGrid.RowsTextColorPalette>
+                            <dg:PaletteCollection>
+                                <Color>#FFFFFF</Color>
+                                <Color>#FFFFFF</Color>
+                            </dg:PaletteCollection>
+                        </dg:DataGrid.RowsTextColorPalette>
+                        <dg:DataGrid.Columns>
+                            <dg:DataGridColumn Title="Race" PropertyName="demonRace" IsVisible="True" Width="60*"/>
+                            <dg:DataGridColumn Title="Lv" PropertyName="demonLevel" IsVisible="True" Width="30*" />
+                            <dg:DataGridColumn x:Name ="DemonName" Title="Name" PropertyName="demonName" IsVisible="True" Width="90*" CellTemplate="{StaticResource cellTemplate}"/>
+                            <dg:DataGridColumn Title="HP" PropertyName="demonHP" IsVisible="True" Width="30*" />
+                            <dg:DataGridColumn Title="MP" PropertyName="demonMP" IsVisible="True" Width="30*" />
+                            <dg:DataGridColumn Title="St" PropertyName="demonStr" IsVisible="True" Width="30*" />
+                            <dg:DataGridColumn Title="In" PropertyName="demonInt" IsVisible="True" Width="30*" />
+                            <dg:DataGridColumn Title="Ma" PropertyName="demonMag" IsVisible="True" Width="30*" />
+                            <dg:DataGridColumn Title="Vi" PropertyName="demonVit" IsVisible="True" Width="30*" />
+                            <dg:DataGridColumn Title="Ag" PropertyName="demonAgi" IsVisible="True" Width="30*" />
+                            <dg:DataGridColumn Title="Lu" PropertyName="demonLck" IsVisible="True" Width="30*" />
+                        </dg:DataGrid.Columns>
+                    </dg:DataGrid>
+                </ScrollView>
 
-            <Button
+                <Button
             x:Name="CounterBtn"
             Text="Return back" 
             Clicked="OnCounterClicked"
             HorizontalOptions="Fill" 
             Grid.Row="2">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="Black"/>
-                        <Setter Property="BorderColor" Value="White"/>
-                        <Setter Property="BorderWidth" Value="2"/>
-                        <Setter Property="CornerRadius" Value="0"/>
-                    </Style>
-                </Button.Style>
-            </Button>
-        </Grid>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Black"/>
+                            <Setter Property="BorderColor" Value="White"/>
+                            <Setter Property="BorderWidth" Value="2"/>
+                            <Setter Property="CornerRadius" Value="0"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </Frame>
+    </Frame>
 </ContentPage>

@@ -2,84 +2,165 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FusionCalculator.DemonPage"
-             xmlns:dg="clr-namespace:Maui.DataGrid;assembly=Maui.DataGrid"
-             Title="NewPage1" BackgroundColor="Black">
-    <Frame BackgroundColor="Black" BorderColor="White">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="0" Orientation="Vertical">
-                    <Label Text="{Binding Path=demonRace, StringFormat='Lvl:{0}'}"/>
-                    <Label Text="{Binding Path=demonHP, StringFormat='HP:{0}'}"/>
-                    <Label Text="{Binding Path=demonMP, StringFormat='MP:{0}'}"/>
-                    <Label Text="{Binding Path=demonCP, StringFormat='CP:{0}'}"/>
-                </StackLayout>
-                <Image Grid.Column="1"/>
-            </Grid>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="1" Orientation="Vertical">
-                    <Label Text="{Binding Path=demonPAtk, StringFormat='P.Hit:{0}'}"/>
-                    <Label Text="{Binding Path=demonPAccuracy, StringFormat='P.Accuracy:{0}'}"/>
-                    <Label Text="{Binding Path=demonDefence, StringFormat='Defence:{0}'}"/>
-                    <Label Text="{Binding Path=demonEvasion, StringFormat='Evasion:{0}'}"/>
-                    <Label Text="{Binding Path=demonMAtk, StringFormat='M.Hit:{0}'}"/>
-                    <Label Text="{Binding Path=demonMAccuracy, StringFormat='M.Accuracy:{0}'}"/>
-                </StackLayout>
-            </Grid>
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="0" Orientation="Vertical">
-                    <Label Text="{Binding Path=demonStr, StringFormat='Strength:{0}'}"/>
-                    <Label Text="{Binding Path=demonInt, StringFormat='Intelligence:{0}'}"/>
-                    <Label Text="{Binding Path=demonMag, StringFormat='Magic:{0}'}"/>
-                    <Label Text="{Binding Path=demonVit, StringFormat='Vitality:{0}'}"/>
-                    <Label Text="{Binding Path=demonAgi, StringFormat='Agility:{0}'}"/>
-                    <Label Text="{Binding Path=demonLck, StringFormat='Luck:{0}'}"/>
-                </StackLayout>
-                <StackLayout Grid.Column="1" Orientation="Vertical">
-                    <ProgressBar Progress="{Binding demonStr}"/>
-                    <ProgressBar Progress="{Binding demonInt}"/>
-                    <ProgressBar Progress="{Binding demonMag}"/>
-                    <ProgressBar Progress="{Binding demonVit}"/>
-                    <ProgressBar Progress="{Binding demonAgi}"/>
-                    <ProgressBar Progress="{Binding demonLck}"/>
-                </StackLayout>
-            </Grid>
-            <dg:DataGrid ItemsSource="{Binding Path=FusionPairs}" BorderColor="White" Margin="30" HeaderBackground="Black"
+             xmlns:converter="clr-namespace:FusionCalculator.Converters"
+             xmlns:dg="clr-namespace:Maui.DataGrid;assembly=Maui.DataGrid" BackgroundColor="#3A413A">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:ProgressBarConverter x:Key="progressBarConverter" />
+            <converter:ElementToIconConverter x:Key="elementConverter" />
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style TargetType="Label" x:Key="HeaderLabel">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="ProgressBar">
+                <Setter Property="ProgressColor" Value="ForestGreen"/>
+                <Setter Property="BackgroundColor" Value="DarkSlateBlue"/>
+                <Setter Property="HeightRequest" Value="20"/>
+                <Setter Property="Margin" Value="4,0,4,0"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Frame CornerRadius="0" Margin="0" Padding="0" BackgroundColor="#3A413A" BorderColor="#3A413A">
+        <Frame BackgroundColor="Black" BorderColor="#657B75" HasShadow="True" Margin="5" CornerRadius="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0" Orientation="Vertical">
+                        <Label Text="{Binding Path=demonRace, StringFormat='Race:{0}'}"/>
+                        <Label Text="{Binding Path=demonLevel, StringFormat='Lvl:{0}'}"/>
+                        <Label Text="{Binding Path=demonHP, StringFormat='HP:{0}'}"/>
+                        <Label Text="{Binding Path=demonMP, StringFormat='MP:{0}'}"/>
+                        <Label Text="{Binding Path=demonCP, StringFormat='CP:{0}'}"/>
+                    </StackLayout>
+                    <Image Grid.Column="1" Source="d_33.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="EndAndExpand"/>
+                </Grid>
+                <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <VerticalStackLayout Grid.Column="0" HorizontalOptions="Start">
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding Path=skill1.Element, Converter={StaticResource elementConverter}}"/>
+                            <Label Text="{Binding Path=skill1.Name, StringFormat='{0}:'}"/>
+                            <Label Text="{Binding Path=skill1.Cost}"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding Path=skill2.Element, Converter={StaticResource elementConverter}}"/>
+                            <Label Text="{Binding Path=skill2.Name, StringFormat='{0}:'}"/>
+                            <Label Text="{Binding Path=skill2.Cost}"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding Path=skill3.Element, Converter={StaticResource elementConverter}}"/>
+                            <Label Text="{Binding Path=skill3.Name, StringFormat='{0}:'}"/>
+                            <Label Text="{Binding Path=skill3.Cost}"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="1" HorizontalOptions="End">
+                        <Label Text="{Binding Path=demonPAtk, StringFormat='P.Atk:{0}'}"/>
+                        <Label Text="{Binding Path=demonPAccuracy, StringFormat='P.Accuracy:{0}'}"/>
+                        <Label Text="{Binding Path=demonDefence, StringFormat='Defence:{0}'}"/>
+                        <Label Text="{Binding Path=demonEvade, StringFormat='Evasion:{0}'}"/>
+                        <Label Text="{Binding Path=demonMAtk, StringFormat='M.Hit:{0}'}"/>
+                        <Label Text="{Binding Path=demonMAccuracy, StringFormat='M.Accuracy:{0}'}"/>
+                    </VerticalStackLayout>
+                </Grid>
+                <Grid Grid.Row="2" Grid.ColumnSpan="2" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="{Binding Path=demonStr, StringFormat='Strength:{0}'}"/>
+                        <Label Text="{Binding Path=demonInt, StringFormat='Intelligence:{0}'}"/>
+                        <Label Text="{Binding Path=demonMag, StringFormat='Magic:{0}'}"/>
+                        <Label Text="{Binding Path=demonVit, StringFormat='Vitality:{0}'}"/>
+                        <Label Text="{Binding Path=demonAgi, StringFormat='Agility:{0}'}"/>
+                        <Label Text="{Binding Path=demonLck, StringFormat='Luck:{0}'}"/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="1">
+                        <ProgressBar Progress="{Binding demonStr, Converter={StaticResource progressBarConverter}}"/>
+                        <ProgressBar Progress="{Binding demonInt, Converter={StaticResource progressBarConverter}}"/>
+                        <ProgressBar Progress="{Binding demonMag, Converter={StaticResource progressBarConverter}}"/>
+                        <ProgressBar Progress="{Binding demonVit, Converter={StaticResource progressBarConverter}}"/>
+                        <ProgressBar Progress="{Binding demonAgi, Converter={StaticResource progressBarConverter}}"/>
+                        <ProgressBar Progress="{Binding demonLck, Converter={StaticResource progressBarConverter}}"/>
+                    </VerticalStackLayout>
+                </Grid>
+                <Border Grid.Row="3" Grid.ColumnSpan="2" Margin="0,0,0,5" Padding="0" BackgroundColor="Black">
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout Margin="10" HorizontalOptions="CenterAndExpand">
+                            <Label Text="⚔"/>
+                            <Label Text="{Binding physResist}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Margin="10" HorizontalOptions="CenterAndExpand">
+                            <Label Text="🔫"/>
+                            <Label Text="{Binding gunResist}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Margin="10" HorizontalOptions="CenterAndExpand">
+                            <Label Text="🔥"/>
+                            <Label Text="{Binding fireResist}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Margin="10" HorizontalOptions="CenterAndExpand">
+                            <Label Text="❄"/>
+                            <Label Text="{Binding iceResist}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Margin="10" HorizontalOptions="CenterAndExpand">
+                            <Label Text="🌀"/>
+                            <Label Text="{Binding forceResist}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Margin="10" HorizontalOptions="CenterAndExpand">
+                            <Label Text="🗲"/>
+                            <Label Text="{Binding elecResist}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Margin="10" HorizontalOptions="CenterAndExpand">
+                            <Label Text="☉"/>
+                            <Label Text="{Binding expelResist}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Margin="10" HorizontalOptions="CenterAndExpand">
+                            <Label Text="💀"/>
+                            <Label Text="{Binding curseResist}"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+                <ScrollView Grid.Row="4">
+                    <dg:DataGrid ItemsSource="{Binding Path=FusionPairs}" BorderColor="White" HeaderBackground="Black"
                          HeaderLabelStyle="{StaticResource HeaderLabel}">
-                <dg:DataGrid.RowsBackgroundColorPalette>
-                    <dg:PaletteCollection>
-                        <Color>#000000</Color>
-                        <Color>#000000</Color>
-                    </dg:PaletteCollection>
-                </dg:DataGrid.RowsBackgroundColorPalette>
-                <dg:DataGrid.RowsTextColorPalette>
-                    <dg:PaletteCollection>
-                        <Color>#FFFFFF</Color>
-                        <Color>#FFFFFF</Color>
-                    </dg:PaletteCollection>
-                </dg:DataGrid.RowsTextColorPalette>
-                <dg:DataGrid.Columns>
-                    <dg:DataGridColumn Title="Demon 1" PropertyName="demon1" IsVisible="True" Width="Auto"/>
-                    <dg:DataGridColumn Title="Demon 2" PropertyName="demon2" IsVisible="True" Width="Auto" />
-                </dg:DataGrid.Columns>
-            </dg:DataGrid>
-        </Grid>
+                        <dg:DataGrid.RowsBackgroundColorPalette>
+                            <dg:PaletteCollection>
+                                <Color>#000000</Color>
+                                <Color>#000000</Color>
+                            </dg:PaletteCollection>
+                        </dg:DataGrid.RowsBackgroundColorPalette>
+                        <dg:DataGrid.RowsTextColorPalette>
+                            <dg:PaletteCollection>
+                                <Color>#FFFFFF</Color>
+                                <Color>#FFFFFF</Color>
+                            </dg:PaletteCollection>
+                        </dg:DataGrid.RowsTextColorPalette>
+                        <dg:DataGrid.Columns>
+                            <dg:DataGridColumn Title="Demon 1" PropertyName="demon1.Name" IsVisible="True" Width="*" />
+                            <dg:DataGridColumn Title="Demon 2" PropertyName="demon2.Name" IsVisible="True" Width="*" />
+                        </dg:DataGrid.Columns>
+                    </dg:DataGrid>
+                </ScrollView>
+            </Grid>
+        </Frame>
     </Frame>
 </ContentPage>

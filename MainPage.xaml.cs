@@ -1,4 +1,5 @@
 ﻿using FusionCalculator.Database;
+using FusionCalculator.Utils;
 
 namespace FusionCalculator
 {
@@ -13,11 +14,13 @@ namespace FusionCalculator
 
         private async void OnCounterClicked(object sender, EventArgs e)
         {
+            await ResourceFilesUtils.CopyFileToAppDataDirectory("fusiondata.db");
             await Navigation.PushAsync(new DemonListPage(), true);
         }
 
         private async void OnSkillButtonClicked(object sender, EventArgs e)
         {
+            await ResourceFilesUtils.CopyFileToAppDataDirectory("fusiondata.db");
             await Navigation.PushAsync(new SkillListPage(), true);
         }
     }
