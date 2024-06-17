@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 
 namespace FusionCalculator.Database
 {
-    public class FusionDatabaseRepository:INotifyPropertyChanged
+    public class SkillListVM:INotifyPropertyChanged
     {
         public SQLiteConnection Database { get; set; }
 
@@ -50,9 +50,9 @@ namespace FusionCalculator.Database
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public FusionDatabaseRepository()
+        public SkillListVM()
         {
-            Database = new SQLiteConnection(Path.Combine(FileSystem.Current.AppDataDirectory, "FusionData.db"));
+            Database = new SQLiteConnection(Path.Combine(FileSystem.Current.AppDataDirectory, "fusiondata.db"));
             Skills = GetSkills();
         }
 

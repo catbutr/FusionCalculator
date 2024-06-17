@@ -116,7 +116,7 @@ namespace FusionCalculator.ViewModels
 
         public DemonVM(int demonID)
         {
-            Database = new SQLiteConnection(Path.Combine(FileSystem.Current.AppDataDirectory, "FusionData.db"));
+            Database = new SQLiteConnection("E:\\FusionCalculator\\Resources\\Raw\\fusiondata.db");
             dbDemon = Database.Table<Demon>();
             dbRace = Database.Table<Race>();
             dbDemonResists = Database.Table<Resistances>();

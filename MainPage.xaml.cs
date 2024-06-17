@@ -20,7 +20,6 @@ namespace FusionCalculator
 
         private async void OnSkillButtonClicked(object sender, EventArgs e)
         {
-            await ResourceFilesUtils.CopyFileToAppDataDirectory("fusiondata.db");
             await Navigation.PushAsync(new SkillListPage(), true);
         }
     }
